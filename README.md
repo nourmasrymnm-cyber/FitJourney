@@ -1,2 +1,0 @@
-# FitJourney
-Fitness app
