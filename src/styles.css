@@ -194,3 +194,31 @@ ul.plain { margin: 0; padding-inline-start: var(--s5); display: flex; flex-direc
 .block { display: flex; flex-direction: column; gap: var(--s2); }
 .block h2 { font-size: 16px; font-weight: 700; color: var(--primary); }
 .warn { border-inline-start-color: var(--danger); }
+
+/* ===== Phase 2b: session runner, stats, dialogs ===== */
+.big { font-size: 64px; font-weight: 800; line-height: 1.1; color: var(--primary); font-variant-numeric: tabular-nums; }
+.target-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s5); text-align: center; display: flex; flex-direction: column; gap: var(--s2); }
+.target-box .big { font-size: 48px; }
+.stepper { display: flex; align-items: center; justify-content: center; gap: var(--s5); }
+.stepper strong { font-size: 36px; min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+.stepper .icon-btn { width: 56px; height: 56px; font-size: 28px; }
+.how { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s3) var(--s4); }
+.how summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+.how ol { margin-top: var(--s3); }
+.row2 { display: flex; gap: var(--s3); }
+.row2 .btn { flex: 1; }
+.row2.small .btn { min-height: 46px; padding-inline: var(--s2); font-size: 14px; font-weight: 600; }
+.row-between { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); }
+
+.sheet { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, 0.6); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-card {
+  width: 100%; max-width: 560px; background: var(--surface); border-top-left-radius: var(--r-lg); border-top-right-radius: var(--r-lg);
+  padding: var(--s5) var(--s5) calc(var(--s5) + env(safe-area-inset-bottom)); max-height: 80%; overflow-y: auto;
+}
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.stats-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+.stat { background: var(--surface-2); border-radius: var(--r-md); padding: var(--s3) var(--s4); display: flex; flex-direction: column; gap: 2px; }
+.stat small { color: var(--muted); }
+.stat strong { font-size: 20px; font-variant-numeric: tabular-nums; }
+.message { font-size: 18px; font-weight: 600; color: var(--primary); }
