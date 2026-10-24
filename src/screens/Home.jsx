@@ -1,8 +1,9 @@
 import { useT } from '../i18n/index.js';
 import { weekdayName, weekOrder } from '../lib/dates.js';
 import ItemList from '../components/ItemList.jsx';
+import ProgressCard from '../components/ProgressCard.jsx';
 
-export default function Home({ plan, onExercise }) {
+export default function Home({ plan, stats, onExercise, onStart }) {
   const { t, lang } = useT();
   if (!plan) {
     return <main className="screen with-nav"><p className="hint">{t('plan.noPlan')}</p></main>;
@@ -29,6 +30,8 @@ export default function Home({ plan, onExercise }) {
         })}
       </div>
 
+      <ProgressCard stats={stats} />
+
       {session ? (
         <>
           <div className="hero-card">
@@ -40,9 +43,13 @@ export default function Home({ plan, onExercise }) {
               <span className="pill">{t('level.' + plan.levelCap)}</span>
             </div>
             <p className="hint">{t('plan.targets')}: {session.groups.map((g) => t('group.' + g)).join('، ')}</p>
+            {stats.doneToday ? (
+              <p className="note">✅ {t('run.doneToday')}. {t('run.doneTodayText')}</p>
+            ) : (
+              <button className="btn btn-primary" onClick={() => onStart(session.id)}>{t('run.start')}</button>
+            )}
           </div>
           <ItemList items={session.items} onExercise={onExercise} />
-          <p className="note">{t('plan.runnerSoon')}</p>
         </>
       ) : (
         <div className="hero-card">

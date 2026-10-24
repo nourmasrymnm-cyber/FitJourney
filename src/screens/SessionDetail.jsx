@@ -2,7 +2,7 @@ import { useT } from '../i18n/index.js';
 import BackBar from '../components/BackBar.jsx';
 import ItemList from '../components/ItemList.jsx';
 
-export default function SessionDetail({ session, plan, onBack, onExercise }) {
+export default function SessionDetail({ session, plan, canStart, onStart, onBack, onExercise }) {
   const { t } = useT();
   const mainCount = session.items.filter((i) => i.phase === 'main').length;
   return (
@@ -15,6 +15,9 @@ export default function SessionDetail({ session, plan, onBack, onExercise }) {
       </div>
       <p className="hint">{t('plan.targets')}: {session.groups.map((g) => t('group.' + g)).join('، ')}</p>
       <ItemList items={session.items} onExercise={onExercise} />
+      {canStart
+        ? <button className="btn btn-primary" onClick={() => onStart(session.id)}>{t('run.start')}</button>
+        : <p className="note">✅ {t('run.doneToday')}. {t('run.doneTodayText')}</p>}
     </main>
   );
 }
